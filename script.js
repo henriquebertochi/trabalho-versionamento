@@ -44,3 +44,32 @@ window.addEventListener('load', function() {
         hero.style.transform = 'translateY(0)';
     }, 100);
 });
+
+
+// Troca de views (abas)
+const homeView = document.getElementById("home-view");
+const portfolioView = document.getElementById("portfolio-view");
+const logo = document.getElementById("home-logo");
+
+document.getElementById("portfolio-link").addEventListener("click", (e) => {
+  e.preventDefault();
+  showView("portfolio");
+});
+
+logo.addEventListener("click", () => showView("home"));
+
+function showView(view) {
+  if (view === "portfolio") {
+    homeView.classList.remove("active-view");
+    homeView.classList.add("hidden-view");
+    portfolioView.classList.remove("hidden-view");
+    portfolioView.classList.add("active-view");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  } else {
+    portfolioView.classList.remove("active-view");
+    portfolioView.classList.add("hidden-view");
+    homeView.classList.remove("hidden-view");
+    homeView.classList.add("active-view");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+}
