@@ -73,3 +73,12 @@ function showView(view) {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 }
+
+// Efeito RGB pulsante no subtítulo
+const subtitle = document.querySelector('.subtitle');
+let hue = 0;
+
+setInterval(() => {
+  hue = (hue + 1) % 360;
+  subtitle.style.color = `hsl(${hue}, 100%, 60%)`;
+}, 40);

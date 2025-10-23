@@ -10,6 +10,16 @@
     background-color: #000;
     color: #fff;
     overflow-x: hidden;
+
+    background: linear-gradient(-45deg, #000000, #0a0a0a, #111, #1a1a1a);
+    background-size: 400% 400%;
+    animation: gradientMove 10s ease infinite;
+  }
+
+  @keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
   }
   
   header {
@@ -36,6 +46,30 @@
     text-decoration: none;
     font-size: 16px;
     font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+
+  nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #00ff9d, #00c3ff);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s ease;
+  }
+
+  nav a:hover {
+    color: #00ff9d;
+  }
+
+  nav a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
   }
   
   .logo {
@@ -43,8 +77,17 @@
     font-size: 32px;
     color: #00ff9d;
     cursor: pointer;
-  }
+
   
+    text-shadow: 0 0 10px #00ff9d, 0 0 20px #00ff9d;
+    animation: neonPulse 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes neonPulse {
+  from { text-shadow: 0 0 5px #00ff9d, 0 0 10px #00ff9d; }
+  to { text-shadow: 0 0 20px #00ff9d, 0 0 40px #00ff9d; }
+  }
+
   .social-icons {
     display: flex;
     gap: 20px;
@@ -172,3 +215,69 @@
     margin-bottom: 5px;
   }
   
+  /* HOVER NA IMAGEM PRINCIPAL  */
+.profile-image {
+  position: relative;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.profile-image:hover {
+  transform: scale(1.08) rotate(3deg);
+  box-shadow: 0 0 60px rgba(0, 255, 157, 0.6);
+}
+
+/* Efeito de brilho dinâmico */
+.profile-image::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  background: linear-gradient(45deg, #00ff9d, #00c3ff, #ff00c8, #00ff9d);
+  background-size: 400%;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  animation: glowMove 4s linear infinite;
+}
+
+.profile-image:hover::after {
+  opacity: 1;
+}
+
+@keyframes glowMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.hero h1 {
+  font-size: 64px;
+  font-weight: 800;
+  background: linear-gradient(90deg, #ff0055, #00ff9d, #00c3ff, #ff00c8);
+  background-size: 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rgbText 5s linear infinite;
+}
+
+@keyframes rgbText {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
